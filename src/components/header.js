@@ -4,16 +4,16 @@ export default function header() {
     return (
         <div>
 
-            <div class="header">
+            <header>
                 <a href="/" class="logo">
                     <img src="https://www.sports.info/assets/images/logo_v2.svg" alt="" />
                 </a>
                 <div class="header-right">
-                    <a class="active" href="#home">Home</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#about">About</a>
+                    <a class="active" href="#home">cricket</a>
+                    <a href="#contact">kabaddi</a>
+                    <a href="#about">Soccer</a>
                 </div>
-            </div>
+            </header>
 
         </div>
     )

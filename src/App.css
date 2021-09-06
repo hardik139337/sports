@@ -119,6 +119,15 @@ color: white
   
 }
 
+.card{
+  margin: 20px;
 
+
+}
+
+.card h5{
+  color: black;
+  font-weight: bold;
+}
 
 

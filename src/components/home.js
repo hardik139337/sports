@@ -40,14 +40,22 @@ export default function Home() {
         <div>
 
 
+            <div className="row">
+                <div className="col-md-1"></div>
 
 
-            {/* <Header></Header> */}
-            {Array(state).fill("").map((a) => { return <Link to="/detail"><Card /></Link> })
+                <div className="col-md-7">
+                    {/* <Header></Header> */}
+                    {Array(state).fill("").map((a) => { return <Link to="/detail"><Card /></Link> })
 
-            }
+                    }
 
-            <button className='btn' onClick={() => { setstate(state + 5) }}>loard more</button>
+                    <button className='btn' onClick={() => { setstate(state + 5) }}>loard more</button>
+                </div>
+
+                <div className="row-md-3"></div>
+
+            </div>
         </div>
     )
 }
