@@ -1,0 +1,120 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+.d1{
+
+  padding-left: 10%;
+  padding-right: 30%;
+  margin-bottom: 10px;
+
+}
+
+body{
+  color: #525252;
+}
+
+.count{
+  position: relative;
+  float: right;
+}
+
+.Lastupdated{
+
+  position: relative;
+  float: left;
+margin: 15px;
+}
+
+
+
+.detailfistsection{
+
+  background: url("https://image.crictracker.com/wp-content/uploads/2020/09/AB-de-Villiers-1.jpg") no-repeat;
+  width: 100%;
+  height: 100vh;
+
+  background-size: cover;
+
+}
+
+.detailfistsection h1{
+  padding: 0px;
+  color: white;
+  bottom: 0px;
+  font-size: 40px;
+  max-width: 800px;
+  text-align: center;
+
+}
+
+.banner-inner{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  /* text-align: center; */
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+
+.information{
+  display: flex;
+  justify-content: space-around;
+color: white
+}
+
+
+
+.blog-content{
+  height: 500px;
+  /* color: red; */
+  
+}
