@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
 
-      {/* <Header></Header> */}
+      <Header></Header>
       <Route path='/detail' component={Detail} exact />
       <Route path='/' component={Home} exact />
 
