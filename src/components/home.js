@@ -3,36 +3,23 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-// import './App.css';
 import Card from './card';
-// import Header from './components/header'
-// import Detail from './components/detail'
-// import Home from './components/home';
 
 export default function Home() {
 
 
-    const [state, setstate] = useState(5)
+    const [blogs, setblogs] = useState([])
+
     useEffect(() => {
-        //  const url = 'https://backend.sports.info/api/v1/posts/recent'
-        //  const data = { "nStart": 0, "nLimit": 1, "eSort": "Latest", "bRemoveBannerPosts": true }
-        //   axios.post(url, data, { headers: { 'Content-Type': 'application/json' } }).then(
-        //     (res) => {
-        //       setstate(res.data);
-        //       console.log(res.data);
-        //     })
+        const url = 'https://backend.sports.info/api/v1/posts/recent'
+        const data = { "nStart": 0, "nLimit": 5, "eSort": "Latest", "bRemoveBannerPosts": true }
+        axios.post(url, data).then(
+            (res) => {
 
-        fetch('https://backend.sports.info/api/v1/posts/recent', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: { "nStart": 0, "nLimit": 1, "eSort": "Latest", "bRemoveBannerPosts": true }
-        }).then(
-            (res) => { return res.json() }).then(
-                (data) => { console.log(data) }
-            )
+                //   console.log(res.data.data);
+                setblogs(res.data.data)
+            })
 
-        // console.log(data)
-        // setstate(data)
 
     }, [])
 
@@ -45,12 +32,26 @@ export default function Home() {
 
 
                 <div className="col-md-7">
-                    {/* <Header></Header> */}
-                    {Array(state).fill("").map((a) => { return <Link to="/detail"><Card /></Link> })
+
+                    {
+                        blogs.map((data) => {
+
+                            return <Link to={"/detail/" + data._id} ><Card  {...data} /></Link>
+                        })
 
                     }
 
-                    <button className='btn' onClick={() => { setstate(state + 5) }}>loard more</button>
+                    <button className='btn' onClick={() => {
+
+                        const url = 'https://backend.sports.info/api/v1/posts/recent'
+                        const data = { "nStart": blogs.length, "nLimit": 5, "eSort": "Latest", "bRemoveBannerPosts": true }
+                        axios.post(url, data).then(
+                            (res) => {
+
+                                //   console.log(res.data.data);
+                                setblogs([...blogs, ...res.data.data])
+                            })
+                    }}>loard more</button>
                 </div>
 
                 <div className="row-md-3"></div>

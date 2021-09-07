@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+export default function Detail(props) {
 
-export default function detail() {
+
+    let { id } = useParams()
+    const [state, setstate] = useState({})
+    useEffect(() => {
+
+
+        axios.get(`https://backend.sports.info/api/v1/posts/view/${id}`).then((res) => {
+            console.log(res.data.data.sTitle)
+            setstate(res.data.data)
+        })
+
+
+    }, [])
+
     return (
         <div>
-            <div className='detailfistsection'>
 
-                {/* <div className="container"> */}
+            <div className='detailfistsection' style={{ backgroundImage: `url("${state.sImage}")`, backgroundSize: 'cover' }}>
+
+
                 <div className='banner-inner'>
 
                     <div>
-                        <h1>IPL 2021: TOP 5 BATSMEN WITH HIGHEST INDIVIDUAL SCORES IN IPL HISTORY</h1>
+                        <h1>{state.sTitle}</h1>
                     </div>
                     {/* <br />
                 <div className="information">
@@ -32,11 +49,10 @@ export default function detail() {
                 <div class="row">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-7">
-                        <div style={{padding:'30px'}}>
-                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus perspiciatis recusandae vitae eos suscipit dolore quis tempore cum! Rem rerum, commodi magni explicabo voluptates ipsam fugiat dolorem at quia tenetur voluptas illo consectetur eum aperiam ut veniam, libero unde nostrum quibusdam alias ab enim error obcaecati? Mollitia doloremque quam, saepe sint, reiciendis nobis quasi officiis earum magnam voluptate eveniet aspernatur officia, animi quidem libero itaque amet! Quis labore cum consequuntur, corporis, dolorum maiores quisquam iusto commodi molestiae, velit voluptatum odit quos amet! Doloremque necessitatibus delectus similique, vel perspiciatis quam corrupti? Nulla consequuntur, animi veniam temporibus neque placeat repudiandae aliquid aut necessitatibus cum unde cumque, quas, ab et? Modi atque ipsam aut alias sunt consequatur aspernatur, magnam autem, repellat ipsum veritatis impedit exercitationem cumque ipsa nam? Dolores voluptate facilis laborum maxime pariatur, vitae fuga inventore delectus ipsam modi sunt tempora quod aliquid nihil labore sint minus eos recusandae. Recusandae voluptas totam, accusamus at voluptatem a excepturi doloribus. Magnam, ullam aliquid. Dolores harum nesciunt corporis numquam voluptate? Saepe doloribus qui voluptatem atque quod vero facere animi, est odit optio, in aliquid ut? Sapiente ex non minus laudantium autem aperiam enim. Tenetur illo optio tempora laborum quibusdam, autem praesentium voluptatibus numquam corrupti?
-                        </p>
+                        <div style={{ padding: '30px' }}>
+                            <div dangerouslySetInnerHTML={{ __html: state.sDescription }} />
                         </div>
-                        </div>
+                    </div>
                     <div class="col-sm-3"></div>
                 </div>
 
