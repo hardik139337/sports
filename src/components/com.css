@@ -1,12 +1,12 @@
-header{
-    display: flex;
-    align-items: center;
-    margin: 10px;
+header {
+  display: flex;
+  align-items: center;
+  margin: 10px;
 }
-header img{
-    height: 50px;
+header img {
+  height: 30px;
 }
 
-header div a{
-margin-inline: 20px;
+header div a {
+  margin-inline: 20px;
 }
