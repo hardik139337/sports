@@ -1,32 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { lordBlogDetail } from "./redux";
+
 export default function Detail() {
-  const [state, setstate] = useState({});
   let { id } = useParams();
+  let state = useSelector((store) => {
+    console.log(typeof id);
+    console.log(id);
+    let temp = store.addBlogsDetail?.blogdetail[id];
+    console.log(temp);
+    return temp;
+  });
+
+  let dispatch = useDispatch();
+
   useEffect(() => {
-    axios
-      .get(`https://backend.sports.info/api/v1/posts/view/${id}`)
-      .then((res) => {
-        setstate(res.data.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    dispatch(lordBlogDetail(id));
   }, []);
 
   return (
     <div>
+      {state?.sImage ? "loding" : "datafetch"}
       <div
         className="detailfistsection"
         style={{
-          backgroundImage: `url("${state.sImage}")`,
+          backgroundImage: `url("${state?.sImage}")`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
         }}
       >
         <div className="banner-inner">
-          <h1>{state.sTitle}</h1>
+          <h1>{state?.sTitle}</h1>
         </div>
       </div>
       <div className="blog-content">
@@ -34,7 +39,11 @@ export default function Detail() {
           <div className="col-sm-2"></div>
           <div className="col-sm-7">
             <div style={{ padding: "30px" }}>
-              <div dangerouslySetInnerHTML={{ __html: state.sDescription }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: state?.sDescription,
+                }}
+              />
             </div>
           </div>
           <div className="col-sm-3"></div>
