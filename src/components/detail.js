@@ -5,6 +5,13 @@ import { lordBlogDetail } from "./redux";
 
 export default function Detail() {
   let { id } = useParams();
+
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(lordBlogDetail(id));
+  }, []);
+
   let state = useSelector((store) => {
     console.log(typeof id);
     console.log(id);
@@ -12,12 +19,6 @@ export default function Detail() {
     console.log(temp);
     return temp;
   });
-
-  let dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(lordBlogDetail(id));
-  }, []);
 
   return (
     <div>

@@ -43,19 +43,18 @@ export function lordBlogDetail(id) {
 function addBlogsReduser(state = { blogs: [] }, action) {
   if (action.type == "ADD_BLOGS") {
     return { blogs: state.blogs.concat(action.payloard) };
-  } else {
-    return state;
   }
+  return state;
 }
 
 function addBlogsDetail(state = { blogdetail: {} }, action) {
+  let newstate = { ...state };
   if (action.type == "ADD_BLOG_DETAIL") {
-    state.blogdetail[action.id] = action.payloard;
-    console.log(state, "addBlogsDetail");
-    return state;
-  } else {
-    return state;
+    newstate.blogdetail[action.id] = action.payloard;
+    // console.log(state, "addBlogsDetail");
+    return newstate;
   }
+  return state;
 }
 
 export const store = createStore(
