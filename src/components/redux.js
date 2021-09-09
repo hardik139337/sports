@@ -51,7 +51,7 @@ function addBlogsDetail(state = { blogdetail: {} }, action) {
   let newstate = { ...state };
   if (action.type == "ADD_BLOG_DETAIL") {
     newstate.blogdetail[action.id] = action.payloard;
-    // console.log(state, "addBlogsDetail");
+
     return newstate;
   }
   return state;

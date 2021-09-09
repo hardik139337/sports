@@ -13,10 +13,7 @@ export default function Detail() {
   }, []);
 
   let state = useSelector((store) => {
-    console.log(typeof id);
-    console.log(id);
     let temp = store.addBlogsDetail?.blogdetail[id];
-    console.log(temp);
     return temp;
   });
 
