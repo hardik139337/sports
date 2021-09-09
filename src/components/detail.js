@@ -13,23 +13,22 @@ export default function Detail() {
   }, []);
 
   let state = useSelector((store) => {
-    let temp = store.addBlogsDetail?.blogdetail[id];
+    let temp = store.addBlogsDetail.blogdetail[id];
     return temp;
   });
 
-  return (
+  return state ? (
     <div>
-      {state?.sImage ? "loding" : "datafetch"}
       <div
         className="detailfistsection"
         style={{
-          backgroundImage: `url("${state?.sImage}")`,
+          backgroundImage: `url("${state.sImage}")`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
         }}
       >
         <div className="banner-inner">
-          <h1>{state?.sTitle}</h1>
+          <h1>{state.sTitle}</h1>
         </div>
       </div>
       <div className="blog-content">
@@ -39,7 +38,7 @@ export default function Detail() {
             <div style={{ padding: "30px" }}>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: state?.sDescription,
+                  __html: state.sDescription,
                 }}
               />
             </div>
@@ -48,5 +47,7 @@ export default function Detail() {
         </div>
       </div>
     </div>
+  ) : (
+    <div>loading</div>
   );
 }
