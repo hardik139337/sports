@@ -25,7 +25,9 @@ export function lordBlogs(l) {
   };
 }
 
-export function lordBlogDetail(id) {
+export function lordBlogDetail(id, state) {
+  if (state?.addBlogsDetail.blogdetail[id]) return 0;
+
   return async (dispatch) => {
     let iddata = await axios
       .get(`https://backend.sports.info/api/v1/posts/view/${id}`)
